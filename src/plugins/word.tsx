@@ -15,7 +15,7 @@ export default function WordPlugin(): Plugin {
 }
 
 interface TextRange extends Range {
-  text?: string;
+  text: string;
 }
 
 function findWordAtOffset(
@@ -61,7 +61,7 @@ function findWordAtFocus(
 
   const path = focus.path.toArray();
 
-  const range: TextRange = Range.create({
+  const range = Range.create({
     anchor: {
       offset: start,
       path
@@ -70,7 +70,7 @@ function findWordAtFocus(
       offset: end,
       path
     }
-  });
+  }) as TextRange;
 
   range.text = text;
 
